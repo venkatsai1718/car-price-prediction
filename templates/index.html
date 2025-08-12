@@ -98,7 +98,6 @@
 
             document.querySelector('form').addEventListener('submit', function(event){
                 event.preventDefault();
-                document.getElementById('result').innerHTML = `<h4>predicting..</h4>`
                 const formdata = new FormData(this)
                 fetch("/predict", {
                     method:'POST',

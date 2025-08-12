@@ -98,6 +98,7 @@
 
             document.querySelector('form').addEventListener('submit', function(event){
                 event.preventDefault();
+                document.getElementById('result').innerHTML = `<h6 style="color:violet">please wait while model is predicting..</h6>`
                 const formdata = new FormData(this)
                 fetch("/predict", {
                     method:'POST',

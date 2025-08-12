@@ -2,9 +2,13 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import numpy as np
 import pickle
+import os
 
 app = Flask(__name__)
-car = pd.read_csv('quikr_cleaned.csv')
+
+file_path = os.path.join(os.path.dirname(__file__), 'quikr_cleaned.csv')
+model_path = os.path.join(os.path.dirname(__file__), 'LR.pkl')
+car = pd.read_csv(file_path)
 
 @app.route("/")
 def index():
@@ -22,7 +26,7 @@ def predict():
     fuel = request.form['fuel_type']
     kms_driven = request.form['kms_driven']
             
-    pipe = pickle.load(open('LR.pkl', 'rb'))
+    pipe = pickle.load(open(model_path, 'rb'))
     input_data = pd.DataFrame([{
             'company': company,
             'name': model,

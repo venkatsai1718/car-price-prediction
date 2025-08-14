@@ -35,7 +35,7 @@ def predict():
             'fuel_type': fuel
         }])
     prediction = np.round(pipe.predict(input_data)[0])
-    print(company, model, y, fuel, kms_driven, prediction)
+    # print(company, model, y, fuel, kms_driven, prediction)
     return jsonify({"result": str(prediction)})
 
 if __name__=='__main__':
